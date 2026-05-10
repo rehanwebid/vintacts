@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Portfolio - Single Page</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600&family=Sora:wght@600;700&family=JetBrains+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            overflow-x: hidden;
+        }
+        .neon-grid {
+            background-image: linear-gradient(to right, rgba(202, 243, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(202, 243, 0, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .glass-card {
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .rim-light {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 20px rgba(212, 255, 0, 0.15);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(212, 255, 0, 0.15);
+        }
+        .timeline-node::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #D4FF00;
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px #D4FF00;
+        }
+        .grid-overlay {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .neon-glow-focus:focus-within {
+            box-shadow: 0 0 20px rgba(212, 255, 0, 0.15);
+        }
+        img {
+            pointer-events: none;
+            -webkit-user-drag: none;
+            user-select: none;
+        }
+        .img-protect {
+            position: relative;
+        }
+        .img-protect::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: transparent;
+            z-index: 2;
+            pointer-events: all;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#e4e2e1",
+                        "outline-variant": "#444932",
+                        "primary-fixed-dim": "#b0d500",
+                        "background": "#131313",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary-container": "#596c00",
+                        "secondary-container": "#474746",
+                        "surface-container-low": "#1c1b1b",
+                        "on-background": "#e5e2e1",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary": "#313030",
+                        "surface-container": "#201f1f",
+                        "error-container": "#93000a",
+                        "primary-container": "#caf300",
+                        "tertiary-container": "#e4e2e1",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "outline": "#8f9378",
+                        "on-secondary-fixed-variant": "#474746",
+                        "on-surface-variant": "#c5c9ac",
+                        "primary-fixed": "#caf300",
+                        "on-tertiary-container": "#656464",
+                        "surface-tint": "#b0d500",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "surface-dim": "#131313",
+                        "on-secondary-container": "#b7b5b4",
+                        "tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "on-tertiary": "#303030",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed-variant": "#3e4c00",
+                        "surface-container-highest": "#353534",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "inverse-surface": "#e5e2e1",
+                        "on-error": "#690005",
+                        "surface-variant": "#353534",
+                        "surface-bright": "#3a3939",
+                        "surface": "#131313",
+                        "secondary": "#c8c6c5",
+                        "primary": "#ffffff",
+                        "inverse-primary": "#536600",
+                        "on-primary": "#2a3400",
+                        "inverse-on-surface": "#313030",
+                        "on-primary-fixed": "#171e00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "margin-desktop": "80px",
+                        "max-width": "1440px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Hanken Grotesk"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Sora"],
+                        "headline-lg": ["Sora"],
+                        "headline-md": ["Sora"],
+                        "display-lg": ["Sora"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-lg": ["72px", { "lineHeight": "80px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-body-md text-on-background selection:bg-primary-container selection:text-on-primary-fixed">
+
+    <!-- TopNavBar -->
+    <header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-white/10">
+        <div class="max-w-max-width mx-auto flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4">
+            <div class="font-display-lg text-headline-md font-bold tracking-tighter text-primary-fixed">PORTFOLIO.</div>
+            <nav id="desktop-nav" class="hidden md:flex items-center gap-8 font-body-md text-body-md">
+                <a class="text-primary-fixed font-bold border-b-2 border-primary-fixed pb-1" href="#home">Home</a>
+                <a class="text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#about">About</a>
+                <a class="text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#education">Education</a>
+                <a class="text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#projects">Projects</a>
+                <a class="text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#skills">Skills</a>
+                <a class="text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#contact">Contact</a>
+            </nav>
+            <button class="hidden md:block bg-primary-fixed text-on-primary-fixed px-6 py-2 font-bold hover:scale-95 transition-transform duration-200 glow-hover">
+                Get in Touch
+            </button>
+            <button id="hamburger-btn" class="md:hidden p-2 text-primary-fixed z-50">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+        </div>
+        <nav id="mobile-nav" class="hidden md:hidden flex-col items-center gap-4 pb-6 bg-background/95 backdrop-blur-xl">
+            <a class="text-primary-fixed font-bold" href="#home">Home</a>
+            <a class="text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#about">About</a>
+            <a class="text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#education">Education</a>
+            <a class="text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#projects">Projects</a>
+            <a class="text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#skills">Skills</a>
+            <a class="text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#contact">Contact</a>
+            <button class="bg-primary-fixed text-on-primary-fixed px-6 py-2 font-bold">Get in Touch</button>
+        </nav>
+    </header>
+
+    <main class="relative pt-20 md:pt-24">
+        <!-- Section 1: Home -->
+        <section id="home" class="relative min-h-screen flex items-center overflow-hidden neon-grid">
+            <div class="absolute top-1/4 right-0 w-[600px] h-[600px] bg-primary-fixed/5 rounded-full blur-[120px] -z-10"></div>
+            <div class="container mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+                <div class="lg:col-span-7 z-10" data-aos="fade-right" data-aos-duration="800" data-aos-once="false">
+                    <div class="inline-flex items-center gap-2 mb-6 px-4 py-1.5 glass-card rounded-full rim-light">
+                        <span class="w-2 h-2 bg-primary-fixed rounded-full animate-pulse"></span>
+                        <span class="font-label-mono text-label-mono text-primary-fixed">KEEP YOUR EXPERIENCES PURE !</span>
+                    </div>
+                    <h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg mb-6 leading-tight tracking-tighter">
+                        Crafting Digital <br />
+                        <span class="text-primary-fixed">Experiences</span> with <br />
+                        Precision.
+                    </h1>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-10 leading-relaxed">
+                        A passionate designer focused on creating intuitive and visually stunning user interfaces that bridge the gap between technical mastery and human connection.
+                    </p>
+                    <div class="flex flex-wrap gap-6 items-center">
+                        <button class="bg-primary-fixed text-on-primary-fixed px-10 py-4 font-bold font-body-md text-lg transition-all hover:scale-105 glow-hover">
+                            View My Work
+                        </button>
+                        <a class="flex items-center gap-3 font-bold text-on-surface hover:text-primary-fixed transition-colors group" href="#">
+                            <span class="w-12 h-12 flex items-center justify-center border border-white/20 rounded-full group-hover:border-primary-fixed">
+                                <span class="material-symbols-outlined">north_east</span>
+                            </span>
+                            Explore Services
+                        </a>
+                    </div>
+                    <div class="mt-16 flex items-center gap-8">
+                        <div class="flex -space-x-3 img-protect">
+                            <img alt="Portrait" class="w-12 h-12 rounded-full border-2 border-background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9qQstkb9do5hMe5b3wZG_F7JHsZ349a2nA8PCRydxi3s4XetZen3g91C8HckmaI4uZAyl-FIUZYPqjtPfMiPvHPfoU9sPj9gqsYs6-YZWiIi-aLVDh5mWeNMrLt6Hqd2G83UFztoSGF_MvyoalvX-4SXPRYrTUktpUjeZbqo0a1lJw-jN595WqCUYV9iYPaREtzoiRQAh9UeMX_yiN_aSBHop5jxLxQoBcickFeON6DiWrqScJbTp6DzwIGs8oj-qESe-6bfsKUE" />
+                            <img alt="Portrait" class="w-12 h-12 rounded-full border-2 border-background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw65q7D438bBtgNAI2QbOrZ5u3VkIiE9Loz-SrH9B5fhTQImyfTE4xTUFTVjeCV38-Fdb15wH6m82L_FEMjo9L1DG8GlHNzFBUuwtbSu0Vq1wY-E4X0wCltuT0kVz4V9fxrZ4r7jmGqd_sp7vpdaJHGKG5wTYwalBsKWxHN_aTEtxK_pO1VxpKzKr0G5M68OdoETKvctdYRQMMMQtOja5oTDCLcCxo9VDAp0IIdkEUcYnEIPIsIW5R4Kcl9WJf0VtXRjNS3vA1K7o" />
+                            <img alt="Portrait" class="w-12 h-12 rounded-full border-2 border-background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRO6jdgImEThben7ttIjRiMeIvrglliAotSYuxL4uCCoJwLU89uusxOToMAg8V_NT8TfX_l-0lQP1YxyARzhaC2CBIlgdEQ4r8G98cYHBZNeezwG_m6fukVvm-P3omQKPsoyeogR__5_-ojRtoUj3fC_mOUKuhLHxNZLWnD7vwK__gpVW-iCBOHsW_PjtOFATr7_uTNaZ2uHXEJvM2is3sMElH6CuFH9a-az6TCmwyLCUHlyHQ5v9CfrXmT55QmNcoQEzjWr4xNtY" />
+                        </div>
+                        <div>
+                            <p class="font-headline-md text-headline-md text-primary-fixed">120+</p>
+                            <p class="font-label-mono text-label-mono text-on-surface-variant">SUCCESSFUL PROJECTS</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 relative" data-aos="fade-left" data-aos-duration="800" data-aos-once="false">
+                    <div class="relative w-full aspect-square flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary-fixed/20 to-transparent rounded-full blur-[80px] animate-pulse"></div>
+                        <div class="img-protect relative z-10 w-full h-auto">
+                            <img alt="Abstract 3D" class="w-full h-auto drop-shadow-[0_0_50px_rgba(202,243,0,0.2)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiR7zDwnL2qbiGhgOg_6VppBsZjlBLRGgxxIpaqr7S4QKwh0MePHL0XRqeReWDuwL7122pABZslHxDHRFTtI2CX-tzVfOOfmMms2NecvRspgwTe0JeXGserhAQfvdMjDsrEGmGRVrXNnNeXoMV7_wD-2gV0-bd0-pO95TAD6KvhZNo1z0HdfqPoGeKmAdNwXyW7u9ZeboIkqfFhaH68s5Qb1my2NJRGceg_96J5ssfzy9cc-Ut_Gvt3Qoj7oejzzDMnZ-c6jGweko" />
+                        </div>
+                        <div class="absolute -bottom-10 -left-10 glass-card p-4 rounded-xl rim-light w-48 hidden xl:block">
+                            <p class="font-label-mono text-label-mono text-primary-fixed mb-2">LIVE METRICS</p>
+                            <div class="h-2 w-full bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary-fixed w-[78%]"></div>
+                            </div>
+                            <p class="font-label-mono text-[10px] mt-2 text-on-surface-variant">OPTIMIZING FLOWS...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: About -->
+        <section id="about" class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop pt-24 md:pt-32 pb-24">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center mb-16 md:mb-32">
+                <div class="md:col-span-7 space-y-8" data-aos="fade-up" data-aos-duration="800" data-aos-once="false">
+                    <div class="space-y-2">
+                        <span class="font-label-mono text-label-mono text-primary-fixed tracking-widest">ABOUT ME</span>
+                        <h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-white leading-tight">
+                            UI/UX enthusiast <br />
+                            <span class="text-primary-fixed">shaping digital</span> <br />
+                            futures.
+                        </h1>
+                    </div>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                        I am a dedicated product designer with a relentless focus on user-centered design and a passion for solving complex architectural problems through elegant digital solutions. My approach blends technical precision with creative intuition.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <div class="bg-surface-container-high/50 border border-white/10 px-6 py-4 flex flex-col gap-1">
+                            <span class="font-label-mono text-label-mono text-primary-fixed">FOCUS</span>
+                            <span class="font-body-md text-body-md">User Research</span>
+                        </div>
+                        <div class="bg-surface-container-high/50 border border-white/10 px-6 py-4 flex flex-col gap-1">
+                            <span class="font-label-mono text-label-mono text-primary-fixed">APPROACH</span>
+                            <span class="font-body-md text-body-md">Systematic Design</span>
+                        </div>
+                        <div class="bg-surface-container-high/50 border border-white/10 px-6 py-4 flex flex-col gap-1">
+                            <span class="font-label-mono text-label-mono text-primary-fixed">GOAL</span>
+                            <span class="font-body-md text-body-md">Seamless UX</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-5 relative group" data-aos="zoom-in" data-aos-duration="800" data-aos-once="false">
+                    <div class="absolute -inset-1 bg-primary-fixed opacity-20 blur-2xl group-hover:opacity-40 transition-opacity"></div>
+                    <div class="relative aspect-square glass-card rim-light overflow-hidden p-4 img-protect">
+                        <div class="w-full h-full border border-primary-fixed/30 relative">
+                            <img alt="Portrait" class="w-full h-full object-cover grayscale contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdoNJcX_4_9k84cBgZpnJIUUG6W4KKbS4J69v4OCtDB6HBozP2mOrirLISWary8GUO5JSHTAyigYEObqm7rRtauz-1VAdHVbrOj0vXwNwkqydutbatrkBh3sYfwnYwJWzyVvrAqCAAaUxDKVWIAyQQ2sDQ7JPdQxRTp0y0AogkloviybmH3dG3nMsMcIS7GhFdJvJRlG6xtEy4nBcmfxYvIMb4odmHyqCiiN_y9ACmLNCpPvrg9fdBr92M9KUolSKAa0YftsoYvCc" />
+                            <div class="absolute inset-0 bg-primary-fixed/5 mix-blend-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 border-b-2 border-r-2 border-primary-fixed"></div>
+                </div>
+            </div>
+            <!-- Journey Section -->
+            <div class="space-y-12 mb-16 md:mb-32">
+                <div class="flex flex-col md:flex-row justify-between items-end gap-6">
+                    <div class="space-y-2">
+                        <span class="font-label-mono text-label-mono text-primary-fixed">HISTORY</span>
+                        <h2 class="font-headline-lg text-headline-lg text-white">My Journey</h2>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant max-w-md text-right">
+                        A timeline of professional milestones that define my expertise and technical evolution.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                    <div class="md:col-span-2 glass-card p-8 rim-light hover:glow-hover transition-all duration-500" data-aos="fade-right" data-aos-duration="800" data-aos-once="false">
+                        <div class="flex justify-between items-start mb-12">
+                            <span class="bg-primary-fixed/10 text-primary-fixed px-3 py-1 font-label-mono text-label-mono">2021 — PRESENT</span>
+                            <span class="material-symbols-outlined text-primary-fixed">rocket_launch</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-white mb-4">Lead Product Designer</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant">
+                            Pioneering the next generation of fintech interfaces. I lead a multi-disciplinary team focusing on accessible design systems and high-fidelity data visualizations.
+                        </p>
+                    </div>
+                    <div class="bg-primary-fixed p-8 flex flex-col justify-between group cursor-default" data-aos="fade-up" data-aos-duration="800" data-aos-once="false">
+                        <div>
+                            <h3 class="font-headline-md text-headline-md text-on-primary-fixed mb-2">120+</h3>
+                            <p class="font-label-mono text-label-mono text-on-primary-fixed-variant uppercase">Projects Delivered</p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="h-px bg-on-primary-fixed/20 w-full"></div>
+                            <p class="font-body-md text-body-md text-on-primary-fixed font-semibold">
+                                Crafting pixel-perfect solutions across fintech, health-tech, and e-commerce sectors.
+                            </p>
+                            <span class="material-symbols-outlined text-on-primary-fixed text-4xl block translate-y-2 group-hover:translate-x-2 transition-transform">arrow_outward</span>
+                        </div>
+                    </div>
+                    <div class="glass-card p-8 rim-light hover:glow-hover transition-all duration-500" data-aos="fade-left" data-aos-duration="800" data-aos-once="false">
+                        <div class="flex justify-between items-start mb-12">
+                            <span class="bg-white/5 text-on-surface-variant px-3 py-1 font-label-mono text-label-mono">2019 — 2021</span>
+                            <span class="material-symbols-outlined text-on-surface-variant">polyline</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-white mb-4">UI/UX Architect</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant">
+                            Specialized in user flow optimization and wireframing for complex SaaS platforms.
+                        </p>
+                    </div>
+                    <div class="md:col-span-2 glass-card p-8 rim-light hover:glow-hover transition-all duration-500 overflow-hidden relative" data-aos="fade-right" data-aos-duration="800" data-aos-once="false">
+                        <div class="relative z-10">
+                            <div class="flex justify-between items-start mb-12">
+                                <span class="bg-white/5 text-on-surface-variant px-3 py-1 font-label-mono text-label-mono">2017 — 2019</span>
+                                <span class="material-symbols-outlined text-on-surface-variant">edit_note</span>
+                            </div>
+                            <h3 class="font-headline-md text-headline-md text-white mb-4">Creative Strategist</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+                                Bridging the gap between brand identity and digital experience. Developed visual languages for startups that scaled to multi-million dollar valuations.
+                            </p>
+                        </div>
+                        <div class="absolute bottom-0 right-0 w-1/2 h-full opacity-10">
+                            <svg class="w-full h-full text-primary-fixed" viewbox="0 0 100 100">
+                                <path d="M0 80 Q 25 20 50 80 T 100 80" fill="none" stroke="currentColor" stroke-width="0.5"></path>
+                                <path d="M0 90 Q 25 30 50 90 T 100 90" fill="none" stroke="currentColor" stroke-width="0.2"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Passion Section -->
+            <div class="glass-card p-8 md:p-24 rim-light relative overflow-hidden" data-aos="fade-up" data-aos-duration="800" data-aos-once="false">
+                <div class="absolute top-0 right-0 p-8">
+                    <span class="material-symbols-outlined text-primary-fixed text-6xl opacity-20">psychology</span>
+                </div>
+                <div class="max-w-3xl space-y-8 relative z-10">
+                    <span class="font-label-mono text-label-mono text-primary-fixed tracking-widest uppercase">Philosophy</span>
+                    <h2 class="font-headline-lg text-headline-lg text-white">Passion for problem-solving.</h2>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant">
+                        I believe that great design is invisible. It's the seamless flow of a user journey, the intuitive placement of a button, and the silent satisfaction of a task completed without friction.
+                    </p>
+                    <div class="pt-4 flex items-center gap-6">
+                        <div class="flex -space-x-3">
+                            <div class="w-12 h-12 rounded-full border-2 border-background bg-surface-container-highest flex items-center justify-center">
+                                <span class="material-symbols-outlined text-sm">token</span>
+                            </div>
+                            <div class="w-12 h-12 rounded-full border-2 border-background bg-primary-fixed flex items-center justify-center">
+                                <span class="material-symbols-outlined text-sm text-black">auto_awesome</span>
+                            </div>
+                        </div>
+                        <p class="font-label-mono text-label-mono text-white">ALWAYS EVOLVING, ALWAYS DESIGNING.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Education -->
+        <section id="education" class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop pt-24 md:pt-32 pb-24 relative z-10">
+            <header class="mb-16 md:mb-20 max-w-3xl" data-aos="fade-up" data-aos-duration="800" data-aos-once="false">
+                <span class="font-label-mono text-label-mono text-primary-fixed uppercase tracking-widest mb-4 block">Academic Path</span>
+                <h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg mb-6 leading-tight">
+                    Building the <span class="text-primary-fixed">Foundation</span> of Digital Excellence.
+                </h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                    A chronological journey through my technical education and specialized certifications in human-computer interaction and design engineering.
+                </p>
+            </header>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+                <div class="md:col-span-4 flex flex-col gap-6">
+                    <div class="glass-card p-8 rounded-xl relative overflow-hidden" data-aos="fade-right" data-aos-duration="800" data-aos-once="false">
+                        <div class="absolute top-0 right-0 p-4 opacity-10">
+                            <span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'FILL' 1;">history_edu</span>
+                        </div>
+                        <span class="font-label-mono text-label-mono text-primary-fixed mb-2 block">Quick Summary</span>
+                        <h3 class="font-headline-md text-headline-md mb-4">6+ Years of Growth</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary-fixed" style="font-variation-settings: 'opsz' 20;">check_circle</span>
+                                <span class="font-body-md text-body-md text-on-surface-variant">BSc in Computer Science</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary-fixed" style="font-variation-settings: 'opsz' 20;">check_circle</span>
+                                <span class="font-body-md text-body-md text-on-surface-variant">Advanced UI/UX Certification</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary-fixed" style="font-variation-settings: 'opsz' 20;">check_circle</span>
+                                <span class="font-body-md text-body-md text-on-surface-variant">Product Design Workshop</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="glass-card p-8 rounded-xl bg-primary-container/5 border-primary-fixed/20 neon-glow" data-aos="fade-right" data-aos-duration="800" data-aos-once="false">
+                        <h4 class="font-headline-md text-headline-md text-primary-fixed mb-4">Currently Learning</h4>
+                        <p class="font-body-md text-body-md text-on-surface-variant mb-6">Mastering Generative AI for Interfaces and WebGPU acceleration.</p>
+                        <div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+                            <div class="h-full bg-primary-fixed w-3/4 rounded-full"></div>
+                        </div>
+                        <span class="font-label-mono text-[10px] mt-2 block text-right">75% COMPLETE</span>
+                    </div>
+                </div>
+                <div class="md:col-span-8 space-y-gutter relative">
+                    <div class="absolute left-6 top-10 bottom-10 w-0.5 bg-gradient-to-b from-primary-fixed/50 via-primary-fixed to-transparent hidden md:block"></div>
+                    <div class="relative pl-0 md:pl-20 group" data-aos="fade-left" data-aos-duration="800" data-aos-once="false">
+                        <div class="hidden md:block absolute left-6 top-10 w-8 h-8 timeline-node bg-background border-2 border-primary-fixed rounded-full z-20"></div>
+                        <div class="glass-card p-8 rounded-xl group-hover:border-primary-fixed/40 transition-all duration-300">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                                <div>
+                                    <span class="font-label-mono text-label-mono text-primary-fixed uppercase">2021 — 2023</span>
+                                    <h3 class="font-headline-md text-headline-md mt-1">Master of Digital Product Design</h3>
+                                </div>
+                                <div class="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-lg border border-white/10 w-fit">
+                                    <span class="material-symbols-outlined text-on-surface-variant text-sm">location_on</span>
+                                    <span class="font-label-mono text-xs text-on-surface-variant">London, UK</span>
+                                </div>
+                            </div>
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                                Specialized in Human-Centered Design and Behavioral Psychology. Thesis focused on reducing cognitive load in complex fintech dashboard environments.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-primary-fixed/10 text-primary-fixed font-label-mono text-xs rounded-full border border-primary-fixed/20">Advanced UX Research</span>
+                                <span class="px-3 py-1 bg-primary-fixed/10 text-primary-fixed font-label-mono text-xs rounded-full border border-primary-fixed/20">Motion Systems</span>
+                                <span class="px-3 py-1 bg-primary-fixed/10 text-primary-fixed font-label-mono text-xs rounded-full border border-primary-fixed/20">Design Ops</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative pl-0 md:pl-20 group" data-aos="fade-left" data-aos-duration="800" data-aos-once="false">
+                        <div class="hidden md:block absolute left-6 top-10 w-8 h-8 timeline-node bg-background border-2 border-primary-fixed rounded-full z-20"></div>
+                        <div class="glass-card p-8 rounded-xl group-hover:border-primary-fixed/40 transition-all duration-300">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                                <div>
+                                    <span class="font-label-mono text-label-mono text-primary-fixed uppercase">2017 — 2021</span>
+                                    <h3 class="font-headline-md text-headline-md mt-1">BSc Computer Science</h3>
+                                </div>
+                                <div class="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-lg border border-white/10 w-fit">
+                                    <span class="material-symbols-outlined text-on-surface-variant text-sm">location_on</span>
+                                    <span class="font-label-mono text-xs text-on-surface-variant">San Francisco, USA</span>
+                                </div>
+                            </div>
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                                Comprehensive studies in software engineering, data structures, and computer graphics.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-primary-fixed/10 text-primary-fixed font-label-mono text-xs rounded-full border border-primary-fixed/20">Front-end Architecture</span>
+                                <span class="px-3 py-1 bg-primary-fixed/10 text-primary-fixed font-label-mono text-xs rounded-full border border-primary-fixed/20">Data Viz</span>
+                                <span class="px-3 py-1 bg-primary-fixed/10 text-primary-fixed font-label-mono text-xs rounded-full border border-primary-fixed/20">A/B Testing</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative pl-0 md:pl-20 group" data-aos="fade-left" data-aos-duration="800" data-aos-once="false">
+                        <div class="hidden md:block absolute left-6 top-10 w-8 h-8 timeline-node bg-background border-2 border-primary-fixed rounded-full z-20"></div>
+                        <div class="glass-card p-8 rounded-xl group-hover:border-primary-fixed/40 transition-all duration-300">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                                <div>
+                                    <span class="font-label-mono text-label-mono text-primary-fixed uppercase">2013 — 2017</span>
+                                    <h3 class="font-headline-md text-headline-md mt-1">High School Graduation</h3>
+                                </div>
+                            </div>
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-4 leading-relaxed">
+                                Focus on Mathematics and Graphic Arts. Lead designer for the annual school digital magazine.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Certifications -->
+            <div class="mt-16 md:mt-24" data-aos="fade-up" data-aos-duration="800" data-aos-once="false">
+                <div class="flex items-center justify-between mb-12">
+                    <h2 class="font-headline-md text-headline-md">Specialized Certifications</h2>
+                    <div class="h-[1px] flex-1 bg-white/10 mx-8 hidden md:block"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                    <div class="glass-card p-6 rounded-xl hover:translate-y-[-8px] transition-transform duration-300">
+                        <div class="w-12 h-12 bg-primary-fixed/10 rounded-lg flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-primary-fixed" style="font-variation-settings: 'opsz' 32;">verified</span>
+                        </div>
+                        <h4 class="font-headline-md text-body-lg font-bold mb-2">Google UX Design Professional</h4>
+                        <span class="font-label-mono text-xs text-on-surface-variant opacity-60 uppercase mb-4 block">Credential ID: GUX-9921</span>
+                        <p class="font-body-md text-sm text-on-surface-variant">In-depth training on user research, wireframing, and interactive prototyping.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-xl hover:translate-y-[-8px] transition-transform duration-300">
+                        <div class="w-12 h-12 bg-primary-fixed/10 rounded-lg flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-primary-fixed" style="font-variation-settings: 'opsz' 32;">shield</span>
+                        </div>
+                        <h4 class="font-headline-md text-body-lg font-bold mb-2">Interaction Design Specialization</h4>
+                        <span class="font-label-mono text-xs text-on-surface-variant opacity-60 uppercase mb-4 block">UCSD - Coursera</span>
+                        <p class="font-body-md text-sm text-on-surface-variant">Focusing on social computing, experience design, and prototyping for the future.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-xl hover:translate-y-[-8px] transition-transform duration-300">
+                        <div class="w-12 h-12 bg-primary-fixed/10 rounded-lg flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-primary-fixed" style="font-variation-settings: 'opsz' 32;">code</span>
+                        </div>
+                        <h4 class="font-headline-md text-body-lg font-bold mb-2">Full-Stack Design Engineering</h4>
+                        <span class="font-label-mono text-xs text-on-surface-variant opacity-60 uppercase mb-4 block">Stanford Open</span>
+                        <p class="font-body-md text-sm text-on-surface-variant">Advanced CSS architecture and modern JavaScript frameworks for designers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Projects -->
+        <section id="projects" class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop pt-24 md:pt-32 pb-24">
+            <div class="mb-12 md:mb-16" data-aos="fade-up" data-aos-duration="800" data-aos-once="false">
+                <span class="font-label-mono text-label-mono text-primary-fixed-dim uppercase tracking-[0.2em]">Curated Work</span>
+                <h1 class="font-headline-lg text-headline-lg mt-4 mb-8">Engineering <br /><span class="text-on-surface-variant italic">Next-Gen</span> Experiences.</h1>
+                <div class="flex flex-wrap gap-4 items-center">
+                    <button class="bg-primary-fixed text-on-primary-fixed font-label-mono text-label-mono px-6 py-2 rounded-full">All Projects</button>
+                    <button class="border border-white/10 hover:border-primary-fixed/50 text-on-surface-variant hover:text-primary-fixed font-label-mono text-label-mono px-6 py-2 rounded-full transition-all">Mobile App</button>
+                    <button class="border border-white/10 hover:border-primary-fixed/50 text-on-surface-variant hover:text-primary-fixed font-label-mono text-label-mono px-6 py-2 rounded-full transition-all">Web Design</button>
+                    <button class="border border-white/10 hover:border-primary-fixed/50 text-on-surface-variant hover:text-primary-fixed font-label-mono text-label-mono px-6 py-2 rounded-full transition-all">UX Research</button>
+                    <button class="border border-white/10 hover:border-primary-fixed/50 text-on-surface-variant hover:text-primary-fixed font-label-mono text-label-mono px-6 py-2 rounded-full transition-all">Branding</button>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+                <div class="md:col-span-8 group relative rounded-xl overflow-hidden glass-card rim-light glow-hover transition-all duration-300" data-aos="fade-up" data-aos-duration="800" data-aos-once="false">
+                    <div class="aspect-[16/9] w-full overflow-hidden img-protect">
+                        <img alt="Dashboard" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLn19Xm5oZTldxI6jO4Y6cT3kZdrD4IZL3kRmw8nmidP8i6LYxJqkrNHfr0YbvLKmNcllQIH1Z6qDqsEz-SU80o08FUaKnuBziULEf8yx3GGM3lw8WJKTP5nR0N8Du3hhT6plCn2VGckoajjs3ZesIwo8ZZ_E8Y-59L3cFqtoZcDYfQyuAGVMIoC4oF0oFeLhwHZOEmhhzXM8YAjA9AMP97Pg897n25Xogkv0RDf-12cvlOffjUL615xTcN2DTprVJt7vkTkW2Mog" />
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="font-label-mono text-label-mono text-primary-fixed bg-primary-fixed/10 px-3 py-1 rounded">Web Design</span>
+                            <span class="material-symbols-outlined text-primary-fixed">north_east</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md mb-2">CryptoVision Dashboard</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant max-w-xl">A comprehensive real-time analytics engine for cryptocurrency institutional traders.</p>
+                    </div>
+                </div>
+                <div class="md:col-span-4 group relative rounded-xl overflow-hidden glass-card rim-light glow-hover transition-all duration-300" data-aos="fade-up" data-aos-duration="800" data-aos-once="false">
+                    <div class="aspect-[4/5] w-full overflow-hidden img-protect">
+                        <img alt="Wallet" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXb266Jpm_UZiEpnxBCUogQOFevNA6XhxBAC3JOtIrHcozonvIiR8DLDoMwvWh6Ks5nibWfCfwZXkZ-jegNcMFG0CDRZ_YDzUmUtJxCVoR955H_eLXKe-TR9MxjZ1u9kEXSfHlrdVLGs50OgM-RWejiFTjxKz9iFInxz464Z9rteHuy2dhQs0DBDKJu7zBLNsDFBUnqV1Aa8O3xnEhHSAN3cfPFyIkM-lBwT2UKo7dQALAzKaVMVX3nmqv9hxn2Q7X5JD-PHVkNos" />
+                    </div>
+                    <div class="p-8">
+                        <span class="font-label-mono text-label-mono text-primary-fixed bg-primary-fixed/10 px-3 py-1 rounded">Mobile App</span>
+                        <h3 class="font-headline-md text-headline-md mt-4 mb-2">Nebula Wallet</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant">Secure non-custodial asset management with integrated biometric validation.</p>
+                    </div>
+                </div>
+                <div class="md:col-span-4 group relative rounded-xl overflow-hidden glass-card rim-light glow-hover transition-all duration-300" data-aos="fade-up" data-aos-duration="800" data-aos-once="false">
+                    <div class="aspect-[4/5] w-full overflow-hidden img-protect">
+                        <img alt="Research" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxi9xj9ZJMUt1pj3OdeAAx_R804zilWB9hUhFiRXpiLxVYDcym1w51-Yxl4nsVqohV28BRBISHcAu1xGI6CqDIELQYyaB1bIRl3gfFJB0fu3Y2__XX0ZwPMFdyaWIBIIYLGo3rjMShkfg5UarNekjv4qTaHtfMgophhkJ9oxMHpPtIaQxmcTKTC8XdaWt2aLva6lgC8fhpj6R9TUl0baXcvx_bM1ucIaSDnLWaPv3WSsNSfJF0qvLTRRFwF150TelixoRtva2s2P0" />
+                    </div>
+                    <div class="p-8">
+                        <span class="font-label-mono text-label-mono text-primary-fixed bg-primary-fixed/10 px-3 py-1 rounded">UX Research</span>
+                        <h3 class="font-headline-md text-headline-md mt-4 mb-2">User Pulse System</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant">Data-driven behavioral mapping for high-frequency trading platforms.</p>
+                    </div>
+                </div>
+                <div class="md:col-span-4 group relative rounded-xl overflow-hidden glass-card rim-light glow-hover transition-all duration-300 bg-surface-container-high/40" data-aos="fade-up" data-aos-duration="800" data-aos-once="false">
+                    <div class="p-8 flex flex-col h-full">
+                        <div class="mb-auto">
+                            <span class="font-label-mono text-label-mono text-primary-fixed bg-primary-fixed/10 px-3 py-1 rounded">Research</span>
+                            <h3 class="font-headline-md text-headline-md mt-6 mb-4">Atomic Design System</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">A scalable documentation library for a global fintech ecosystem.</p>
+                        </div>
+                        <div class="mt-8 flex gap-2">
+                            <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20"><span class="material-symbols-outlined text-xs">code</span></div>
+                            <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20"><span class="material-symbols-outlined text-xs">palette</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-4 group relative rounded-xl overflow-hidden glass-card rim-light glow-hover transition-all duration-300" data-aos="fade-up" data-aos-duration="800" data-aos-once="false">
+                    <div class="aspect-square w-full overflow-hidden img-protect">
+                        <img alt="Branding" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlGS1UYkMy4HILUQQCVzxLxHIf6iCNQVDNH46QRjDL14RrQU5G7h-i2JbkzOAtrA5Ol4anFa4konPUURkHEb_4Sy4mY1hLVCkwU_KBtrjYcQ9-d52Hzv2UEr1Ibp37A0ChBs4PHXsKJgxmbo-fWlyzSahkgOlVq-fmO6u2ZGbkKq2tmwcIrjVAo42E9p0JbPyAN6DGq-0jEIJcq2y4QvzprtOZdDcjg_BcHlB0Xvb16Btk_3B4Ts38nh4LKqZy5Hw6DVrx312Xdvg" />
+                    </div>
+                    <div class="p-8">
+                        <span class="font-label-mono text-label-mono text-primary-fixed bg-primary-fixed/10 px-3 py-1 rounded">Branding</span>
+                        <h3 class="font-headline-md text-headline-md mt-4 mb-2">Vortex Identity</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant">Complete visual language and brand strategy for a decentralized protocol.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-16 md:mt-24 text-center" data-aos="zoom-in" data-aos-duration="800" data-aos-once="false">
+                <p class="font-body-lg text-body-lg text-on-surface-variant mb-8">Ready to start your next big project?</p>
+                <button class="bg-primary-fixed text-on-primary-fixed font-headline-md text-headline-md px-12 py-4 rounded-xl flex items-center gap-4 mx-auto transition-all hover:shadow-[0_0_30px_rgba(212,255,0,0.3)] group">
+                    Let's Build It
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Section 5: Skills -->
+        <section id="skills" class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop pt-24 md:pt-32 pb-24 relative z-10">
+            <div class="absolute top-0 right-0 w-1/2 h-full opacity-20 pointer-events-none">
+                <div class="w-full h-full bg-gradient-to-l from-primary-fixed/20 to-transparent"></div>
+            </div>
+            <div class="mb-16 md:mb-20" data-aos="fade-up" data-aos-duration="800" data-aos-once="false">
+                <div class="inline-block px-3 py-1 border border-primary-fixed/30 bg-primary-fixed/5 rounded-full mb-6">
+                    <span class="font-label-mono text-label-mono text-primary-fixed uppercase tracking-widest text-xs">Technical Mastery</span>
+                </div>
+                <h2 class="font-display-lg text-headline-lg md:text-display-lg text-on-surface mb-6 leading-none">
+                    Technical <span class="text-primary-fixed">Arsenal.</span>
+                </h2>
+                <p class="max-w-2xl font-body-lg text-body-lg text-on-surface-variant">
+                    Leveraging a sophisticated suite of industry-leading tools and technical methodologies to engineer high-fidelity digital experiences.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+                <div class="md:col-span-7 glass-card rounded-3xl p-8 flex flex-col hover:border-primary-fixed/40 transition-colors group" data-aos="fade-right" data-aos-duration="800" data-aos-once="false">
+                    <div class="flex justify-between items-start mb-12">
+                        <div>
+                            <h3 class="font-headline-md text-headline-md text-on-surface mb-2">Design</h3>
+                            <p class="font-body-md text-on-surface-variant opacity-70">The core of visual strategy and architecture.</p>
+                        </div>
+                        <span class="material-symbols-outlined text-primary-fixed text-4xl">palette</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-end">
+                                <span class="font-label-mono text-on-surface font-bold">Figma</span>
+                                <span class="font-label-mono text-primary-fixed text-xs">95%</span>
+                            </div>
+                            <div class="h-1 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary-fixed neon-glow w-[95%] transition-all duration-1000"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-end">
+                                <span class="font-label-mono text-on-surface font-bold">Adobe XD</span>
+                                <span class="font-label-mono text-primary-fixed text-xs">80%</span>
+                            </div>
+                            <div class="h-1 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary-fixed neon-glow w-[80%] transition-all duration-1000"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-end">
+                                <span class="font-label-mono text-on-surface font-bold">User Research</span>
+                                <span class="font-label-mono text-primary-fixed text-xs">85%</span>
+                            </div>
+                            <div class="h-1 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary-fixed neon-glow w-[85%] transition-all duration-1000"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-end">
+                                <span class="font-label-mono text-on-surface font-bold">Visual Identity</span>
+                                <span class="font-label-mono text-primary-fixed text-xs">90%</span>
+                            </div>
+                            <div class="h-1 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary-fixed neon-glow w-[90%] transition-all duration-1000"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-5 bg-primary-fixed rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden group" data-aos="fade-left" data-aos-duration="800" data-aos-once="false">
+                    <div class="relative z-10">
+                        <h3 class="font-headline-md text-headline-md text-on-primary-fixed mb-4">Pro-Tech Focus</h3>
+                        <p class="font-body-md text-on-primary-fixed/80 leading-relaxed">
+                            Consistently pushing the boundaries of what's possible in digital interfaces with a focus on speed and precision.
+                        </p>
+                    </div>
+                    <div class="relative z-10 flex items-center gap-2 group-hover:gap-4 transition-all duration-300">
+                        <span class="font-label-mono text-on-primary-fixed font-bold">VIEW CASE STUDIES</span>
+                        <span class="material-symbols-outlined text-on-primary-fixed">arrow_forward</span>
+                    </div>
+                    <div class="absolute -bottom-10 -right-10 opacity-20 transform group-hover:scale-110 transition-transform duration-500">
+                        <span class="material-symbols-outlined text-[200px] text-on-primary-fixed">blur_on</span>
+                    </div>
+                </div>
+                <div class="md:col-span-4 glass-card rounded-3xl p-8 flex flex-col hover:border-primary-fixed/40 transition-colors" data-aos="fade-right" data-aos-duration="800" data-aos-once="false">
+                    <div class="mb-12">
+                        <span class="material-symbols-outlined text-primary-fixed text-4xl mb-4">code</span>
+                        <h3 class="font-headline-md text-headline-md text-on-surface mb-2">Technical</h3>
+                        <p class="font-body-md text-on-surface-variant opacity-70">Implementation &amp; Systems.</p>
+                    </div>
+                    <div class="space-y-8 flex-1">
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-end">
+                                <span class="font-label-mono text-on-surface font-bold">HTML/CSS</span>
+                                <span class="font-label-mono text-primary-fixed text-xs">90%</span>
+                            </div>
+                            <div class="h-1 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary-fixed neon-glow w-[90%]"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-end">
+                                <span class="font-label-mono text-on-surface font-bold">React / Next.js</span>
+                                <span class="font-label-mono text-primary-fixed text-xs">75%</span>
+                            </div>
+                            <div class="h-1 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary-fixed neon-glow w-[75%]"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-end">
+                                <span class="font-label-mono text-on-surface font-bold">Tailwind CSS</span>
+                                <span class="font-label-mono text-primary-fixed text-xs">95%</span>
+                            </div>
+                            <div class="h-1 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary-fixed neon-glow w-[95%]"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-8 glass-card rounded-3xl p-8 flex flex-col hover:border-primary-fixed/40 transition-colors" data-aos="fade-left" data-aos-duration="800" data-aos-once="false">
+                    <div class="flex justify-between items-start mb-12">
+                        <div>
+                            <h3 class="font-headline-md text-headline-md text-on-surface mb-2">Tools &amp; Prototyping</h3>
+                            <p class="font-body-md text-on-surface-variant opacity-70">Accelerating the workflow through efficiency.</p>
+                        </div>
+                        <span class="material-symbols-outlined text-primary-fixed text-4xl">construction</span>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-12 gap-y-8">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
+                                <span class="material-symbols-outlined text-primary-fixed">animation</span>
+                            </div>
+                            <div>
+                                <span class="block font-label-mono text-on-surface">Prototyping</span>
+                                <span class="text-xs text-primary-fixed font-label-mono">ADVANCED</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
+                                <span class="material-symbols-outlined text-primary-fixed">token</span>
+                            </div>
+                            <div>
+                                <span class="block font-label-mono text-on-surface">Design Systems</span>
+                                <span class="text-xs text-primary-fixed font-label-mono">MASTER</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
+                                <span class="material-symbols-outlined text-primary-fixed">layers</span>
+                            </div>
+                            <div>
+                                <span class="block font-label-mono text-on-surface">Adobe Suite</span>
+                                <span class="text-xs text-primary-fixed font-label-mono">EXPERT</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
+                                <span class="material-symbols-outlined text-primary-fixed">terminal</span>
+                            </div>
+                            <div>
+                                <span class="block font-label-mono text-on-surface">Version Control</span>
+                                <span class="text-xs text-primary-fixed font-label-mono">INTERMEDIATE</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
+                                <span class="material-symbols-outlined text-primary-fixed">group</span>
+                            </div>
+                            <div>
+                                <span class="block font-label-mono text-on-surface">Agile/Scrum</span>
+                                <span class="text-xs text-primary-fixed font-label-mono">CERTIFIED</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
+                                <span class="material-symbols-outlined text-primary-fixed">monitoring</span>
+                            </div>
+                            <div>
+                                <span class="block font-label-mono text-on-surface">Data Viz</span>
+                                <span class="text-xs text-primary-fixed font-label-mono">ADVANCED</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-16 md:mt-24 glass-card rounded-3xl p-8 md:p-12 overflow-hidden relative" data-aos="fade-up" data-aos-duration="800" data-aos-once="false">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h4 class="font-headline-md text-headline-md text-on-surface mb-6">Continuous Iteration.</h4>
+                        <p class="font-body-md text-on-surface-variant mb-8">
+                            Technical growth is a linear trajectory. I dedicate 10+ hours weekly to learning emerging frameworks and design patterns.
+                        </p>
+                        <div class="flex gap-4">
+                            <div class="flex flex-col">
+                                <span class="font-display-lg text-headline-md text-primary-fixed">124+</span>
+                                <span class="font-label-mono text-xs opacity-50 uppercase">Repositories</span>
+                            </div>
+                            <div class="w-[1px] bg-white/10 self-stretch"></div>
+                            <div class="flex flex-col">
+                                <span class="font-display-lg text-headline-md text-primary-fixed">450k+</span>
+                                <span class="font-label-mono text-xs opacity-50 uppercase">Pixels Pushed</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative h-64 flex items-end gap-2">
+                        <div class="flex-1 bg-primary-fixed/20 rounded-t-xl h-[40%]"></div>
+                        <div class="flex-1 bg-primary-fixed/30 rounded-t-xl h-[55%]"></div>
+                        <div class="flex-1 bg-primary-fixed/40 rounded-t-xl h-[45%]"></div>
+                        <div class="flex-1 bg-primary-fixed/60 rounded-t-xl h-[75%]"></div>
+                        <div class="flex-1 bg-primary-fixed/80 rounded-t-xl h-[65%]"></div>
+                        <div class="flex-1 bg-primary-fixed neon-glow rounded-t-xl h-[100%]"></div>
+                        <div class="absolute -top-4 right-0 font-label-mono text-xs text-primary-fixed">GROWTH METRICS 2024</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Contact -->
+        <section id="contact" class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop pt-24 md:pt-32 pb-24">
+            <div class="mb-12 md:mb-16" data-aos="fade-up" data-aos-duration="800" data-aos-once="false">
+                <span class="font-label-mono text-label-mono text-primary-fixed-dim border border-primary-fixed-dim/30 px-3 py-1 mb-6 inline-block">GET IN TOUCH</span>
+                <h1 class="font-display-lg text-headline-lg lg:text-display-lg text-primary tracking-tighter mb-4">Let's Build Something Together</h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Have a revolutionary idea or a complex problem that needs a high-fidelity digital solution? I'm available for new projects and collaborations.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+                <div class="lg:col-span-8" data-aos="fade-right" data-aos-duration="800" data-aos-once="false">
+                    <div class="glass-card rim-light p-8 md:p-12">
+                        <form class="space-y-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div class="flex flex-col gap-2 group neon-glow-focus">
+                                    <label class="font-label-mono text-label-mono text-on-surface-variant group-focus-within:text-primary-fixed transition-colors">NAME</label>
+                                    <input class="bg-surface-container-lowest border-outline-variant text-on-surface focus:border-primary-fixed focus:ring-0 transition-all py-4 px-4 font-body-md outline-none" placeholder="Your Full Name" type="text" />
+                                </div>
+                                <div class="flex flex-col gap-2 group neon-glow-focus">
+                                    <label class="font-label-mono text-label-mono text-on-surface-variant group-focus-within:text-primary-fixed transition-colors">EMAIL</label>
+                                    <input class="bg-surface-container-lowest border-outline-variant text-on-surface focus:border-primary-fixed focus:ring-0 transition-all py-4 px-4 font-body-md outline-none" placeholder="hello@example.com" type="email" />
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2 group neon-glow-focus">
+                                <label class="font-label-mono text-label-mono text-on-surface-variant group-focus-within:text-primary-fixed transition-colors">SUBJECT</label>
+                                <input class="bg-surface-container-lowest border-outline-variant text-on-surface focus:border-primary-fixed focus:ring-0 transition-all py-4 px-4 font-body-md outline-none" placeholder="Project Inquiry / General Question" type="text" />
+                            </div>
+                            <div class="flex flex-col gap-2 group neon-glow-focus">
+                                <label class="font-label-mono text-label-mono text-on-surface-variant group-focus-within:text-primary-fixed transition-colors">MESSAGE</label>
+                                <textarea class="bg-surface-container-lowest border-outline-variant text-on-surface focus:border-primary-fixed focus:ring-0 transition-all py-4 px-4 font-body-md outline-none resize-none" placeholder="Tell me about your project or vision..." rows="6"></textarea>
+                            </div>
+                            <button class="bg-primary-fixed text-on-primary-fixed font-bold py-5 px-10 flex items-center justify-center gap-3 w-full md:w-auto hover:shadow-[0_0_20px_rgba(212,255,0,0.3)] transition-all duration-300" type="submit">
+                                SEND MESSAGE
+                                <span class="material-symbols-outlined">north_east</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="lg:col-span-4 flex flex-col gap-gutter" data-aos="fade-left" data-aos-duration="800" data-aos-once="false">
+                    <div class="bg-surface-container rim-light p-8">
+                        <h3 class="font-label-mono text-label-mono text-primary-fixed mb-6 uppercase tracking-widest">Contact Details</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4 group">
+                                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary-fixed transition-colors duration-300 group-hover:text-black">
+                                    <span class="material-symbols-outlined text-body-md">mail</span>
+                                </div>
+                                <div>
+                                    <p class="font-label-mono text-xs text-on-surface-variant">EMAIL ME</p>
+                                    <p class="font-body-md text-on-surface font-semibold">design@portfolio.pro</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 group">
+                                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary-fixed transition-colors duration-300 group-hover:text-black">
+                                    <span class="material-symbols-outlined text-body-md">location_on</span>
+                                </div>
+                                <div>
+                                    <p class="font-label-mono text-xs text-on-surface-variant">LOCATION</p>
+                                    <p class="font-body-md text-on-surface font-semibold">Remote / Worldwide</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-surface-container rim-light p-8 flex-grow">
+                        <h3 class="font-label-mono text-label-mono text-primary-fixed mb-6 uppercase tracking-widest">Connect</h3>
+                        <div class="grid grid-cols-1 gap-4">
+                            <a class="flex items-center justify-between p-4 bg-white/5 border border-white/5 hover:border-primary-fixed/30 hover:bg-white/10 transition-all group" href="#">
+                                <span class="font-body-md text-on-surface">LinkedIn</span>
+                                <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed">open_in_new</span>
+                            </a>
+                            <a class="flex items-center justify-between p-4 bg-white/5 border border-white/5 hover:border-primary-fixed/30 hover:bg-white/10 transition-all group" href="#">
+                                <span class="font-body-md text-on-surface">Dribbble</span>
+                                <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed">open_in_new</span>
+                            </a>
+                            <a class="flex items-center justify-between p-4 bg-white/5 border border-white/5 hover:border-primary-fixed/30 hover:bg-white/10 transition-all group" href="#">
+                                <span class="font-body-md text-on-surface">GitHub</span>
+                                <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed">open_in_new</span>
+                            </a>
+                            <a class="flex items-center justify-between p-4 bg-white/5 border border-white/5 hover:border-primary-fixed/30 hover:bg-white/10 transition-all group" href="#">
+                                <span class="font-body-md text-on-surface">Instagram</span>
+                                <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="h-48 relative overflow-hidden rim-light img-protect">
+                        <img alt="Circuit" class="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-80 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOObbVyg_wfqgXAIxx5n2k5PGhbRIJk9kyJbrlExSPSzLR68F1mNhmWlIUqkOp0fNANvPjE3Kp-gO-XVrw7vu1BY6w4TZEeTwn-nYSzJLnu0JCBxtqMqP9dPUBTvBrvWiYIyTCiZEqaSJFqgggZmDH9e7NizKLnAVZNX5dlzvldwOFF1jtYjKztaV8HMvz0MymKOWg-BWFr_9SzWvrV03DuBenI21OQEcvYBqhx5I85IOUurfERNphiTmwnDncvhGaedxgaveH7WU" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <p class="font-label-mono text-[10px] text-primary-fixed-dim">DATA CENTER: ALPHA-01</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="w-full py-unit-gutter px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 bg-background border-t border-white/5">
+            <div class="font-display-lg text-body-lg text-primary-fixed font-bold tracking-tighter">PORTFOLIO.</div>
+            <div class="font-label-mono text-label-mono text-on-surface-variant">© 2024 DESIGN PORTFOLIO. ALL RIGHTS RESERVED.</div>
+            <div class="flex gap-6">
+                <a class="font-label-mono text-label-mono text-on-secondary-container hover:text-primary-fixed transition-all duration-300" href="#">Dribbble</a>
+                <a class="font-label-mono text-label-mono text-on-secondary-container hover:text-primary-fixed transition-all duration-300" href="#">LinkedIn</a>
+                <a class="font-label-mono text-label-mono text-on-secondary-container hover:text-primary-fixed transition-all duration-300" href="#">GitHub</a>
+                <a class="font-label-mono text-label-mono text-on-secondary-container hover:text-primary-fixed transition-all duration-300" href="#">Instagram</a>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-lowest/80 backdrop-blur-xl border-t border-white/10 flex justify-around items-center py-3 z-50">
+        <a class="flex flex-col items-center gap-1 text-primary-fixed" href="#home"><span class="material-symbols-outlined">home</span><span class="text-[10px] font-label-mono uppercase">Home</span></a>
+        <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#about"><span class="material-symbols-outlined">person</span><span class="text-[10px] font-label-mono uppercase">About</span></a>
+        <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#education"><span class="material-symbols-outlined">school</span><span class="text-[10px] font-label-mono uppercase">Education</span></a>
+        <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#projects"><span class="material-symbols-outlined">work_outline</span><span class="text-[10px] font-label-mono uppercase">Projects</span></a>
+        <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#contact"><span class="material-symbols-outlined">mail</span><span class="text-[10px] font-label-mono uppercase">Contact</span></a>
+    </nav>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: false,
+            mirror: true
+        });
+
+        // Hamburger toggle
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileNav = document.getElementById('mobile-nav');
+        hamburgerBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('hidden');
+        });
+
+        // Close mobile nav on link click
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.add('hidden');
+            });
+        });
+
+        // Proteksi: disable save image & view source
+        document.addEventListener('contextmenu', (e) => {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+        document.addEventListener('dragstart', (e) => {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (
+                (e.ctrlKey && e.key === 'u') ||
+                (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+                (e.ctrlKey && e.shiftKey && e.key === 'J') ||
+                (e.ctrlKey && e.shiftKey && e.key === 'C') ||
+                e.key === 'F12'
+            ) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Highlight active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('#desktop-nav a, #mobile-nav a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('text-primary-fixed', 'font-bold', 'border-b-2', 'border-primary-fixed', 'pb-1');
+                link.classList.add('text-on-surface-variant');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('text-primary-fixed', 'font-bold', 'border-b-2', 'border-primary-fixed', 'pb-1');
+                    link.classList.remove('text-on-surface-variant');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
