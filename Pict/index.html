@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, shrink-to-fit=no">
+  <title>Jagoan Ayam Geprek | Pedas Juara, Rasa Nendang</title>
+  
+  <!-- ===== PROTEKSI 1: Disable Right Click ===== -->
+  <script>
+    // Disable right click
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      return false;
+    });
+  </script>
+  
+  <!-- ===== PROTEKSI 2: Disable Keyboard Shortcuts ===== -->
+  <script>
+    document.addEventListener('keydown', function(e) {
+      // CTRL+U (View Source)
+      if (e.ctrlKey && e.keyCode === 85) {
+        e.preventDefault();
+        return false;
+      }
+      // CTRL+S (Save Page)
+      if (e.ctrlKey && e.keyCode === 83) {
+        e.preventDefault();
+        return false;
+      }
+      // CTRL+SHIFT+I (DevTools)
+      if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+        e.preventDefault();
+        return false;
+      }
+      // F12 (DevTools)
+      if (e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      // CTRL+SHIFT+J (Console)
+      if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+        e.preventDefault();
+        return false;
+      }
+      // CTRL+SHIFT+C (Inspect Element)
+      if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
+        e.preventDefault();
+        return false;
+      }
+      // CTRL+P (Print)
+      if (e.ctrlKey && e.keyCode === 80) {
+        e.preventDefault();
+        return false;
+      }
+      // CTRL+A (Select All)
+      if (e.ctrlKey && e.keyCode === 65) {
+        e.preventDefault();
+        return false;
+      }
+      // CTRL+C (Copy)
+      if (e.ctrlKey && e.keyCode === 67) {
+        e.preventDefault();
+        return false;
+      }
+      // CTRL+V (Paste)
+      if (e.ctrlKey && e.keyCode === 86) {
+        e.preventDefault();
+        return false;
+      }
+    });
+  </script>
+
+  <!-- ===== PROTEKSI 3: Disable Select Text ===== -->
+  <style>
+    /* Disable text selection */
+    * {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
+    /* Allow selection in form inputs */
+    input, textarea, select {
+      -webkit-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+      user-select: text;
+    }
+  </style>
+
+  <!-- ===== PROTEKSI 4: Deteksi DevTools Terbuka ===== -->
+  <script>
+    (function() {
+      const devtools = { open: false, orientation: undefined };
+      const threshold = 160;
+      
+      const emitEvent = (state, orientation) => {
+        if (state) {
+          document.body.innerHTML = '';
+          document.write('<html><head><title>Akses Ditolak</title><style>body{background:#000;color:red;display:flex;align-items:center;justify-content:center;height:100vh;font-family:Arial;text-align:center;flex-direction:column}h1{font-size:3rem}*{margin:0;padding:0}</style></head><body><h1>🚫 AKSES DITOLAK</h1><p style="color:#fff;font-size:1.2rem">Developer Tools terdeteksi!</p><p style="color:#fff;font-size:1.2rem">Tutup DevTools dan refresh halaman.</p></body></html>');
+        }
+      };
+      
+      setInterval(() => {
+        const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+        const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+        
+        if (widthThreshold || heightThreshold) {
+          if (!devtools.open) {
+            devtools.open = true;
+            emitEvent(true);
+          }
+        } else {
+          devtools.open = false;
+        }
+      }, 500);
+    })();
+  </script>
+
+  <!-- Font Awesome 6 untuk semua ikon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #d32f2f;
+      --primary-dark: #b71c1c;
+      --secondary: #ffb300;
+      --accent: #ff6f00;
+      --dark: #1e1e1e;
+      --light: #fff8f0;
+      --white: #ffffff;
+      --gray: #f5f5f5;
+      --text: #333333;
+      --text-light: #666666;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.2);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 10px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ===== NAVIGATION ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(30, 30, 30, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+      transition: var(--transition);
+    }
+
+    .navbar.scrolled {
+      background: rgba(30, 30, 30, 0.98);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      background: var(--primary);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.4rem;
+      box-shadow: 0 0 20px rgba(211, 47, 47, 0.5);
+      animation: logoGlow 2s infinite alternate;
+    }
+
+    @keyframes logoGlow {
+      from { box-shadow: 0 0 20px rgba(211, 47, 47, 0.5); }
+      to { box-shadow: 0 0 35px rgba(211, 47, 47, 0.8); }
+    }
+
+    .logo-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .logo-text span {
+      display: block;
+      font-size: 0.7rem;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 4px;
+      color: var(--secondary);
+      font-weight: 300;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      color: #ccc;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      padding: 5px 0;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      transition: var(--transition);
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+      color: var(--white);
+    }
+
+    .nav-menu a:hover::after,
+    .nav-menu a.active::after {
+      width: 100%;
+    }
+
+    .btn-nav {
+      background: var(--primary);
+      color: white !important;
+      padding: 10px 25px !important;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      border: 2px solid var(--primary);
+    }
+
+    .btn-nav:hover {
+      background: transparent;
+      border-color: var(--secondary);
+      color: var(--secondary) !important;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 28px;
+      height: 3px;
+      background: white;
+      margin: 6px 0;
+      border-radius: 3px;
+      transition: var(--transition);
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%), 
+                  url('https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=1470&auto=format&fit=crop') center/cover no-repeat fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      background: linear-gradient(to top, var(--light), transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--secondary);
+      color: var(--dark);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 179, 0, 0.7); }
+      50% { box-shadow: 0 0 0 20px rgba(255, 179, 0, 0); }
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      color: white;
+      text-shadow: 4px 4px 0 rgba(0,0,0,0.5);
+      letter-spacing: 3px;
+      line-height: 1;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 .highlight {
+      color: var(--secondary);
+      display: block;
+      font-size: 3.5rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #eee;
+      margin-bottom: 35px;
+      font-weight: 300;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 35px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 8px 25px rgba(211, 47, 47, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(211, 47, 47, 0.6);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+
+    /* ===== SECTION STYLING ===== */
+    section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header .subtitle {
+      color: var(--primary);
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .section-header h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: var(--dark);
+      letter-spacing: 2px;
+      margin: 10px 0;
+    }
+
+    .section-header .divider {
+      width: 80px;
+      height: 4px;
+      background: var(--secondary);
+      margin: 15px auto;
+      border-radius: 4px;
+    }
+
+    /* ===== MENU SECTION ===== */
+    #menu {
+      background: var(--white);
+    }
+
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .menu-tab {
+      padding: 10px 25px;
+      border-radius: 50px;
+      background: #f0f0f0;
+      cursor: pointer;
+      font-weight: 500;
+      transition: var(--transition);
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .menu-tab.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .menu-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      display: none;
+    }
+
+    .menu-card.visible {
+      display: block;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .menu-card-img {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .menu-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      pointer-events: none;
+    }
+
+    .menu-card:hover .menu-card-img img {
+      transform: scale(1.1);
+    }
+
+    .menu-card-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--accent);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .menu-card-body {
+      padding: 20px;
+    }
+
+    .menu-card-body h3 {
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+    }
+
+    .menu-card-body .desc {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .menu-card-body .price {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .menu-card-body .btn-add {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 10px;
+      background: var(--primary);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .menu-card-body .btn-add:hover {
+      background: var(--primary-dark);
+    }
+
+    /* ===== FAQ ===== */
+    #faq {
+      background: #fdf6f0;
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: var(--radius-sm);
+      margin-bottom: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 20px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: var(--transition);
+      gap: 10px;
+    }
+
+    .faq-question span {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .faq-question i.fa-chevron-down {
+      transition: transform 0.3s ease;
+      color: var(--primary);
+      font-size: 1rem;
+    }
+
+    .faq-item.active .faq-question i.fa-chevron-down {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      padding: 0 25px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      padding: 0 25px 20px;
+    }
+
+    /* ===== ORDER SECTION ===== */
+    #pemesanan {
+      background: linear-gradient(135deg, var(--dark) 0%, #2d2d2d 100%);
+      color: white;
+    }
+
+    #pemesanan .section-header h2 {
+      color: white;
+    }
+
+    #pemesanan .section-header .subtitle {
+      color: var(--secondary);
+    }
+
+    .order-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .order-info h3 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .order-info ul {
+      list-style: none;
+    }
+
+    .order-info ul li {
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .order-info ul li i {
+      color: var(--secondary);
+      width: 30px;
+      height: 30px;
+      background: rgba(255,179,0,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .order-form {
+      background: white;
+      padding: 35px;
+      border-radius: var(--radius);
+      color: var(--text);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--dark);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: var(--radius-sm);
+      font-family: 'Poppins', sans-serif;
+      transition: var(--transition);
+      font-size: 0.95rem;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-submit:hover {
+      background: var(--primary-dark);
+    }
+
+    /* ===== ABOUT ===== */
+    #tentang {
+      background: var(--white);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-img {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      transition: transform 0.5s;
+      pointer-events: none;
+    }
+
+    .about-img:hover img {
+      transform: scale(1.05);
+    }
+
+    .about-text h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+
+    .about-text .highlight-text {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .stats {
+      display: flex;
+      gap: 30px;
+      margin-top: 25px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    /* ===== CONTACT + MAPS ===== */
+    #kontak {
+      background: #fdf6f0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 40px;
+    }
+
+    .contact-details {
+      background: white;
+      padding: 30px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-details h3 {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .map-wrapper {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      height: 100%;
+      min-height: 350px;
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* ===== TESTIMONIAL ===== */
+    #testimonial {
+      background: var(--white);
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      position: relative;
+      border-left: 5px solid var(--secondary);
+      transition: var(--transition);
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .testimonial-card .quote {
+      font-size: 1rem;
+      font-style: italic;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .testimonial-card .author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-card .author img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    .stars {
+      color: var(--secondary);
+      margin-bottom: 12px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark);
+      color: #aaa;
+      padding: 60px 0 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h4 {
+      color: white;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-col h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--secondary);
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-col ul li a {
+      color: #aaa;
+      text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--secondary);
+      padding-left: 5px;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: white;
+      margin-right: 10px;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 20px 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .footer-bottom i {
+      color: var(--primary);
+    }
+
+    /* ===== WATERMARK PROTECTION ===== */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0;
+    }
+
+    @media print {
+      body {
+        display: none;
+      }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 992px) {
+      .order-wrapper,
+      .about-content,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+      
+      .hero h1 .highlight {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      
+      .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: rgba(30,30,30,0.98);
+        flex-direction: column;
+        padding: 30px;
+        gap: 20px;
+        clip-path: circle(0% at top right);
+        transition: clip-path 0.5s ease-in-out;
+      }
+      
+      .nav-menu.active {
+        clip-path: circle(150% at top right);
+      }
+      
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .hero h1 .highlight {
+        font-size: 2rem;
+      }
+      
+      section {
+        padding: 60px 0;
+      }
+      
+      .section-header h2 {
+        font-size: 2.2rem;
+      }
+      
+      .menu-grid,
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .stats {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .btn-group {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body oncopy="return false" oncut="return false" onpaste="return false" onselectstart="return false" ondragstart="return false">
+  
+  <!-- ===== PROTEKSI 5: Debugger Detection ===== -->
+  <script>
+    // Debugger detection - breaks if DevTools is open
+    setInterval(function() {
+      const start = performance.now();
+      debugger;
+      const end = performance.now();
+      if (end - start > 100) {
+        document.body.innerHTML = '';
+        document.write('<html><head><title>Akses Ditolak</title><style>body{background:#000;color:red;display:flex;align-items:center;justify-content:center;height:100vh;font-family:Arial;text-align:center;flex-direction:column}h1{font-size:3rem}*{margin:0;padding:0}</style></head><body><h1>🚫 AKSES DITOLAK</h1><p style="color:#fff;font-size:1.2rem">Developer Tools terdeteksi!</p><p style="color:#fff;font-size:1.2rem">Tutup DevTools dan refresh halaman.</p></body></html>');
+      }
+    }, 1000);
+  </script>
+
+  <!-- ===== PROTEKSI 6: Console Warning ===== -->
+  <script>
+    console.clear();
+    console.log('%c⚠️ PERINGATAN KEAMANAN!', 'color: red; font-size: 30px; font-weight: bold;');
+    console.log('%cArea ini dilindungi. Segala upaya pencurian kode akan diproses secara hukum.', 'color: white; font-size: 16px;');
+    console.log('%c© 2025 Jagoan Ayam Geprek - All Rights Reserved', 'color: yellow; font-size: 14px;');
+  </script>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <i class="fas fa-fire"></i>
+        </div>
+        <div class="logo-text">
+          JAGOAN
+          <span>AYAM GEPREK</span>
+        </div>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#beranda" class="active"><i class="fas fa-home"></i> Beranda</a></li>
+        <li><a href="#menu"><i class="fas fa-utensils"></i> Menu</a></li>
+        <li><a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
+        <li><a href="#pemesanan"><i class="fas fa-shopping-cart"></i> Pesan</a></li>
+        <li><a href="#tentang"><i class="fas fa-info-circle"></i> Tentang</a></li>
+        <li><a href="#kontak"><i class="fas fa-address-book"></i> Kontak</a></li>
+        <li><a href="#testimonial"><i class="fas fa-star"></i> Testimoni</a></li>
+        <li><a href="#pemesanan" class="btn-nav"><i class="fas fa-paper-plane"></i> Pesan Sekarang</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO / BERANDA ===== -->
+  <section id="beranda" class="hero">
+    <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+      <div class="hero-badge">
+        <i class="fas fa-crown"></i> SEJAK 2019
+      </div>
+      <h1>AYAM GEPREK<br><span class="highlight">LEVEL NAGA</span></h1>
+      <p>Pedas menggigit, crispy di luar, juicy di dalam. Racikan sambal warisan yang bikin ketagihan.</p>
+      <div class="btn-group">
+        <a href="#menu" class="btn btn-primary"><i class="fas fa-book-open"></i> Lihat Menu</a>
+        <a href="#pemesanan" class="btn btn-outline"><i class="fas fa-motorcycle"></i> Pesan Antar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MENU ===== -->
+  <section id="menu">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <p class="subtitle"><i class="fas fa-fire"></i> Menu Andalan</p>
+        <h2>Pilihan Geprek Terbaik</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="menu-tabs" data-aos="fade-up" data-aos-delay="100">
+        <button class="menu-tab active" data-filter="semua"><i class="fas fa-th-large"></i> Semua</button>
+        <button class="menu-tab" data-filter="best-seller"><i class="fas fa-trophy"></i> Best Seller</button>
+        <button class="menu-tab" data-filter="promo"><i class="fas fa-tag"></i> Promo</button>
+      </div>
+      <div class="menu-grid" data-aos="fade-up" data-aos-delay="200">
+        <!-- 3 MENU NETRAL -->
+        <div class="menu-card visible" data-category="semua">
+          <div class="menu-card-img">
+            <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?q=80&w=1470&auto=format&fit=crop" alt="Geprek Original" loading="lazy" draggable="false">
+          </div>
+          <div class="menu-card-body">
+            <h3>Geprek Original</h3>
+            <p class="desc">Sambal bawang klasik dengan level pedas 1-10</p>
+            <span class="price"><i class="fas fa-tag"></i> Rp 18.000</span>
+            <a href="#pemesanan" class="btn-add"><i class="fas fa-plus-circle"></i> Pesan</a>
+          </div>
+        </div>
+        <div class="menu-card visible" data-category="semua">
+          <div class="menu-card-img">
+            <img src="https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=1470&auto=format&fit=crop" alt="Geprek Mozzarella" loading="lazy" draggable="false">
+          </div>
+          <div class="menu-card-body">
+            <h3>Geprek Mozzarella</h3>
+            <p class="desc">Lelehan keju mozzarella + sambal pedas</p>
+            <span class="price"><i class="fas fa-tag"></i> Rp 24.000</span>
+            <a href="#pemesanan" class="btn-add"><i class="fas fa-plus-circle"></i> Pesan</a>
+          </div>
+        </div>
+        <div class="menu-card visible" data-category="semua">
+          <div class="menu-card-img">
+            <img src="https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=1470&auto=format&fit=crop" alt="Paket Jagoan" loading="lazy" draggable="false">
+          </div>
+          <div class="menu-card-body">
+            <h3>Paket Jagoan</h3>
+            <p class="desc">Nasi + Ayam Geprek + Es Teh + Kerupuk</p>
+            <span class="price"><i class="fas fa-tag"></i> Rp 28.000</span>
+            <a href="#pemesanan" class="btn-add"><i class="fas fa-plus-circle"></i> Pesan</a>
+          </div>
+        </div>
+
+        <!-- 3 MENU BEST SELLER -->
+        <div class="menu-card visible" data-category="best-seller">
+          <div class="menu-card-img">
+            <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?q=80&w=1470&auto=format&fit=crop" alt="Geprek Sambal Matah" loading="lazy" draggable="false">
+            <span class="menu-card-badge"><i class="fas fa-award"></i> BEST SELLER</span>
+          </div>
+          <div class="menu-card-body">
+            <h3>Geprek Sambal Matah</h3>
+            <p class="desc">Sambal matah Bali segar + ayam geprek crispy</p>
+            <span class="price"><i class="fas fa-tag"></i> Rp 22.000</span>
+            <a href="#pemesanan" class="btn-add"><i class="fas fa-plus-circle"></i> Pesan</a>
+          </div>
+        </div>
+        <div class="menu-card visible" data-category="best-seller">
+          <div class="menu-card-img">
+            <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?q=80&w=1470&auto=format&fit=crop" alt="Geprek Keju Pedas" loading="lazy" draggable="false">
+            <span class="menu-card-badge"><i class="fas fa-award"></i> BEST SELLER</span>
+          </div>
+          <div class="menu-card-body">
+            <h3>Geprek Keju Pedas</h3>
+            <p class="desc">Taburan keju cheddar meleleh + sambal level 5</p>
+            <span class="price"><i class="fas fa-tag"></i> Rp 26.000</span>
+            <a href="#pemesanan" class="btn-add"><i class="fas fa-plus-circle"></i> Pesan</a>
+          </div>
+        </div>
+        <div class="menu-card visible" data-category="best-seller">
+          <div class="menu-card-img">
+            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1470&auto=format&fit=crop" alt="Geprek Telur Asin" loading="lazy" draggable="false">
+            <span class="menu-card-badge"><i class="fas fa-award"></i> BEST SELLER</span>
+          </div>
+          <div class="menu-card-body">
+            <h3>Geprek Salted Egg</h3>
+            <p class="desc">Saus telur asin creamy + ayam geprek renyah</p>
+            <span class="price"><i class="fas fa-tag"></i> Rp 30.000</span>
+            <a href="#pemesanan" class="btn-add"><i class="fas fa-plus-circle"></i> Pesan</a>
+          </div>
+        </div>
+
+        <!-- 3 MENU PROMO -->
+        <div class="menu-card visible" data-category="promo">
+          <div class="menu-card-img">
+            <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=1480&auto=format&fit=crop" alt="Geprek Hemat 1" loading="lazy" draggable="false">
+            <span class="menu-card-badge" style="background:#4caf50;"><i class="fas fa-percent"></i> PROMO</span>
+          </div>
+          <div class="menu-card-body">
+            <h3>Paket Geprek Hemat</h3>
+            <p class="desc">Ayam geprek + nasi + es teh hanya 20k!</p>
+            <span class="price"><i class="fas fa-tag"></i> <s style="color:#999;font-size:0.9rem;">Rp 25.000</s> Rp 20.000</span>
+            <a href="#pemesanan" class="btn-add"><i class="fas fa-plus-circle"></i> Pesan</a>
+          </div>
+        </div>
+        <div class="menu-card visible" data-category="promo">
+          <div class="menu-card-img">
+            <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?q=80&w=1470&auto=format&fit=crop" alt="Geprek Double" loading="lazy" draggable="false">
+            <span class="menu-card-badge" style="background:#4caf50;"><i class="fas fa-percent"></i> PROMO</span>
+          </div>
+          <div class="menu-card-body">
+            <h3>Double Geprek</h3>
+            <p class="desc">2 ayam geprek + 2 nasi + 2 es teh</p>
+            <span class="price"><i class="fas fa-tag"></i> <s style="color:#999;font-size:0.9rem;">Rp 50.000</s> Rp 40.000</span>
+            <a href="#pemesanan" class="btn-add"><i class="fas fa-plus-circle"></i> Pesan</a>
+          </div>
+        </div>
+        <div class="menu-card visible" data-category="promo">
+          <div class="menu-card-img">
+            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1374&auto=format&fit=crop" alt="Geprek Komplit" loading="lazy" draggable="false">
+            <span class="menu-card-badge" style="background:#4caf50;"><i class="fas fa-percent"></i> PROMO</span>
+          </div>
+          <div class="menu-card-body">
+            <h3>Paket Komplit</h3>
+            <p class="desc">Ayam geprek + tahu tempe + es jeruk</p>
+            <span class="price"><i class="fas fa-tag"></i> <s style="color:#999;font-size:0.9rem;">Rp 35.000</s> Rp 28.000</span>
+            <a href="#pemesanan" class="btn-add"><i class="fas fa-plus-circle"></i> Pesan</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <p class="subtitle"><i class="fas fa-question-circle"></i> Pertanyaan</p>
+        <h2>Yang Sering Ditanyakan</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="faq-container" data-aos="fade-up" data-aos-delay="100">
+        <div class="faq-item">
+          <div class="faq-question">
+            <span><i class="fas fa-thermometer-half" style="color: var(--primary);"></i> Berapa level pedas yang tersedia?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Kami menyediakan level 1-10. Level 1-3 untuk pemula, 4-7 untuk pecinta pedas, dan 8-10 untuk para jagoan sejati! Level 10 kami sebut "Kiamat Pedas".</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span><i class="fas fa-clock" style="color: var(--primary);"></i> Jam operasional kapan saja?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Buka setiap hari pukul 10.00 - 22.00 WIB. Khusus hari Jumat tutup pukul 21.30. Hari libur nasional tetap buka.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span><i class="fas fa-motorcycle" style="color: var(--primary);"></i> Apakah menerima pesanan antar?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Tentu! Kami tersedia di GoFood, GrabFood, dan ShopeeFood. Bisa juga pesan langsung via WhatsApp di nomor 0812-3456-7890 untuk area sekitar Bandung.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span><i class="fas fa-credit-card" style="color: var(--primary);"></i> Metode pembayaran apa saja?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Kami menerima tunai, QRIS, GoPay, OVO, Dana, dan transfer bank (BCA, Mandiri).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PEMESANAN ===== -->
+  <section id="pemesanan">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <p class="subtitle"><i class="fas fa-shopping-bag"></i> Pesan Sekarang</p>
+        <h2>Form Pemesanan</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="order-wrapper">
+        <div class="order-info" data-aos="fade-right" data-aos-delay="100">
+          <h3><i class="fas fa-thumbs-up"></i> Kenapa Pesan di Sini?</h3>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Ayam segar digoreng dadakan</li>
+            <li><i class="fas fa-check-circle"></i> Sambal diracik langsung setelah pesan</li>
+            <li><i class="fas fa-check-circle"></i> Gratis ongkir area Bandung (min. 2 porsi)</li>
+            <li><i class="fas fa-check-circle"></i> Pesan diatas 5 dapat bonus kerupuk</li>
+            <li><i class="fas fa-check-circle"></i> Bisa request level pedas custom</li>
+          </ul>
+        </div>
+        <div class="order-form" data-aos="fade-left" data-aos-delay="200">
+          <form id="orderForm">
+            <div class="form-group">
+              <label><i class="fas fa-user"></i> Nama Lengkap</label>
+              <input type="text" placeholder="Masukkan nama Anda" required>
+            </div>
+            <div class="form-group">
+              <label><i class="fab fa-whatsapp"></i> Nomor WhatsApp</label>
+              <input type="tel" placeholder="0812-xxxx-xxxx" required>
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-utensils"></i> Pilih Menu</label>
+              <select required>
+                <option value="">-- Pilih Menu Favorit --</option>
+                <option>Geprek Original - Rp18.000</option>
+                <option>Geprek Mozzarella - Rp24.000</option>
+                <option>Paket Jagoan - Rp28.000</option>
+                <option>Geprek Sambal Matah - Rp22.000</option>
+                <option>Geprek Keju Pedas - Rp26.000</option>
+                <option>Geprek Salted Egg - Rp30.000</option>
+                <option>Paket Geprek Hemat - Rp20.000</option>
+                <option>Double Geprek - Rp40.000</option>
+                <option>Paket Komplit - Rp28.000</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-sort-numeric-up"></i> Jumlah Porsi</label>
+              <input type="number" min="1" value="1" required>
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-thermometer-full"></i> Level Pedas (1-10)</label>
+              <select required>
+                <option value="">-- Pilih Level --</option>
+                <option>1 - Pemula</option>
+                <option>3 - Menengah</option>
+                <option>5 - Pedas</option>
+                <option>7 - Sangat Pedas</option>
+                <option>10 - Kiamat Pedas</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-sticky-note"></i> Catatan Tambahan</label>
+              <textarea rows="2" placeholder="Contoh: tanpa timun, extra sambal..."></textarea>
+            </div>
+            <button type="submit" class="btn-submit">
+              <i class="fas fa-paper-plane"></i> Kirim Pesanan Sekarang
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TENTANG ===== -->
+  <section id="tentang">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <p class="subtitle"><i class="fas fa-book"></i> Cerita Kami</p>
+        <h2>Tentang Jagoan Geprek</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="about-content">
+        <div class="about-img" data-aos="fade-right" data-aos-delay="100">
+          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1374&auto=format&fit=crop" alt="Dapur Jagoan Geprek" loading="lazy" draggable="false">
+        </div>
+        <div class="about-text" data-aos="fade-left" data-aos-delay="200">
+          <h3>Dari Dapur Rumahan Hingga Jadi <span class="highlight-text">Jagoan Sejati</span></h3>
+          <p>Berdiri sejak 2019, Jagoan Ayam Geprek hadir dari kecintaan pada kuliner pedas Nusantara. Kami menggunakan ayam segar pilihan, cabai langsung dari petani lokal, dan bumbu rahasia yang diwariskan turun-temurun.</p>
+          <p style="margin-top:15px;">Setiap gigitan adalah perpaduan sempurna antara <strong>renyah, juicy, dan pedas</strong> yang bikin nagih. Kini kami telah melayani ribuan pelanggan setia di Bandung dan sekitarnya.</p>
+          <div class="stats">
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
+              <div class="stat-number"><i class="fas fa-calendar-check"></i> 6+</div>
+              <div>Tahun Berdiri</div>
+            </div>
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="400">
+              <div class="stat-number"><i class="fas fa-users"></i> 50K+</div>
+              <div>Pelanggan Puas</div>
+            </div>
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="500">
+              <div class="stat-number"><i class="fas fa-fire"></i> 10</div>
+              <div>Level Pedas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== KONTAK + MAPS ===== -->
+  <section id="kontak">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <p class="subtitle"><i class="fas fa-phone-alt"></i> Hubungi Kami</p>
+        <h2>Kontak & Lokasi</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-details" data-aos="fade-right" data-aos-delay="100">
+          <h3><i class="fas fa-map-pin"></i> Outlet Pusat Bandung</h3>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <strong>Alamat</strong>
+              <p>Jl. Pahlawan No. 88, Bandung (Depan Taman Pahlawan)</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <strong>Telepon</strong>
+              <p>0812-3456-7890</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+            <div>
+              <strong>WhatsApp</strong>
+              <p><a href="https://wa.me/6281234567890" target="_blank" rel="noopener" style="color:var(--primary);"><i class="fab fa-whatsapp"></i> Chat via WhatsApp</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fab fa-instagram"></i></div>
+            <div>
+              <strong>Instagram</strong>
+              <p><a href="#" style="color:var(--primary);">@jagoangeprek.id</a></p>
+            </div>
+          </div>
+          <div style="margin-top:20px; background:#fff8f0; padding:12px; border-radius:8px; text-align:center;">
+            <i class="fas fa-map-pin" style="color:var(--primary);"></i> <strong>Pin Lokasi Nyata:</strong> Jl. Pahlawan No.88, Bandung
+          </div>
+        </div>
+        <div class="map-wrapper" data-aos="fade-left" data-aos-delay="200">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.987098886833!2d107.6191228!3d-6.9174639!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e64afd3b5b6d%3A0x28d9e5e8e8b4b4b2!2sJl.%20Pahlawan%2C%20Bandung!5e0!3m2!1sid!2sid!4v1717000000000" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Lokasi Jagoan Ayam Geprek">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIAL ===== -->
+  <section id="testimonial">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <p class="subtitle"><i class="fas fa-comment-dots"></i> Testimoni</p>
+        <h2>Apa Kata Mereka</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card" data-aos="flip-left" data-aos-delay="100">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="quote">"Sambalnya juara banget! Level 7 udah bikin berkeringat tapi nagih. Ayamnya gede dan crispy. Langganan setiap minggu!"</p>
+          <div class="author">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Rina" loading="lazy" draggable="false">
+            <div>
+              <strong>Rina</strong>
+              <p style="font-size:0.8rem;color:#888;"><i class="fas fa-map-marker-alt"></i> Jakarta</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card" data-aos="flip-left" data-aos-delay="200">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="quote">"Mozzarella gepreknya creamy pedas, cocok buat yang suka keju. Porsi mantap, harga terjangkau!"</p>
+          <div class="author">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Andi" loading="lazy" draggable="false">
+            <div>
+              <strong>Andi</strong>
+              <p style="font-size:0.8rem;color:#888;"><i class="fas fa-map-marker-alt"></i> Bandung</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card" data-aos="flip-left" data-aos-delay="300">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="quote">"Pesen lewat GoFood cepet nyampe. Packing rapi. Recommended banget buat pecinta pedas!"</p>
+          <div class="author">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sari" loading="lazy" draggable="false">
+            <div>
+              <strong>Sari</strong>
+              <p style="font-size:0.8rem;color:#888;"><i class="fas fa-map-marker-alt"></i> Cimahi</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
+          <h4><i class="fas fa-fire"></i> Jagoan Geprek</h4>
+          <p>Pedas juara, rasa nendang sejak 2019. Menggunakan bahan segar dan sambal racikan spesial.</p>
+          <div class="social-links" style="margin-top:15px;">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
+          <h4><i class="fas fa-link"></i> Menu Cepat</h4>
+          <ul>
+            <li><a href="#beranda"><i class="fas fa-chevron-right"></i> Beranda</a></li>
+            <li><a href="#menu"><i class="fas fa-chevron-right"></i> Menu</a></li>
+            <li><a href="#faq"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+            <li><a href="#pemesanan"><i class="fas fa-chevron-right"></i> Pemesanan</a></li>
+          </ul>
+        </div>
+        <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
+          <h4><i class="fas fa-address-card"></i> Kontak</h4>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> Jl. Pahlawan No.88, Bandung</li>
+            <li><i class="fas fa-phone"></i> 0812-3456-7890</li>
+            <li><i class="fab fa-instagram"></i> @jagoangeprek.id</li>
+          </ul>
+        </div>
+        <div class="footer-col" data-aos="fade-up" data-aos-delay="400">
+          <h4><i class="fas fa-clock"></i> Jam Buka</h4>
+          <ul>
+            <li><i class="fas fa-calendar-day"></i> Senin - Kamis: 10.00 - 22.00</li>
+            <li><i class="fas fa-calendar-day"></i> Jumat: 10.00 - 21.30</li>
+            <li><i class="fas fa-calendar-day"></i> Sabtu - Minggu: 09.00 - 22.30</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom" data-aos="fade-up" data-aos-delay="500">
+        <p>&copy; 2025 Jagoan Ayam Geprek. All rights reserved. | Designed with <i class="fas fa-heart"></i> in Bandung</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AOS Animation Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Inisialisasi AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 100
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.nav-menu a:not(.btn-nav)');
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+    
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Menu Filter System
+    const menuTabs = document.querySelectorAll('.menu-tab');
+    const menuCards = document.querySelectorAll('.menu-card');
+
+    menuTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        menuTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.getAttribute('data-filter');
+
+        menuCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'semua' && category === 'semua') {
+            card.classList.add('visible');
+          } else if (filter === 'best-seller' && category === 'best-seller') {
+            card.classList.add('visible');
+          } else if (filter === 'promo' && category === 'promo') {
+            card.classList.add('visible');
+          } else {
+            card.classList.remove('visible');
+          }
+        });
+
+        AOS.refresh();
+      });
+    });
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        const isActive = faqItem.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+        if (!isActive) {
+          faqItem.classList.add('active');
+        }
+      });
+    });
+
+    // Form Submission
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = this.querySelector('input[type="text"]').value;
+      alert(`Terima kasih, ${name}! Pesanan Anda telah diterima.\n\nTim kami akan segera mengkonfirmasi melalui WhatsApp dalam waktu 5 menit.\n\n(Jangan lupa cek WhatsApp Anda!)`);
+      this.reset();
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
